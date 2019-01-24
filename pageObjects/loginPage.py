@@ -8,5 +8,6 @@ class HomePage:
         self.loginButton_ID = 'SubmitLogin'
 
     def login(self,username,password):
+        self.driver
 
 
