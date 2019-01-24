@@ -9,8 +9,8 @@ class BaseTest(TestCase):
 
     def test_get_driver(self):
         self.driver = webdriver.Chrome('/home/aron/Automation/drivers/chromedriver')
-        self.driver.get('https://www.windguru.cz')
-        search = self.driver.find_element(By.ID,'searchspot')
+        self.driver.get('http://automationpractice.com')
+        search = self.driver.find_element(By.ID,'search_query_top')
 
         search.clear()
         search.send_keys('iphone')
