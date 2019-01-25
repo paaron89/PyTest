@@ -5,19 +5,23 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 class LoginPage:
 
+    USERNAME_BOX = (By.ID, 'email')
+    PASSWORD_BOX = (By.ID, 'passwd')
+    LOGIN_BUTTON = (By.ID, 'SubmitLogin')
+    ALERT_BOX = (By.XPATH, '//*[@id="center_column"]/div[1]')
+
     def __init__(self, driver):
         self.driver = driver
 
-        self.usernameBox_ID = 'email'
-        self.passwordBox_ID = 'passwd'
-        self.loginButton_ID = 'SubmitLogin'
+
+
         self.alertBox_Xpath = '//*[@id="center_column"]/div[1]'
 
     def login(self, username, password):
         wait = WebDriverWait(self.driver, 5)
-        usernameBox = self.driver.find_element(By.ID, self.usernameBox_ID)
-        passwordBox = self.driver.find_element(By.ID, self.passwordBox_ID)
-        loginButtonBox = self.driver.find_element(By.ID, self.loginButton_ID)
+        usernameBox = self.driver.find_element(*self.USERNAME_BOX)
+        passwordBox = self.driver.find_element(*self.PASSWORD_BOX)
+        loginButtonBox = self.driver.find_element(*self.LOGIN_BUTTON)
 
         usernameBox.clear()
         usernameBox.send_keys(username)
@@ -28,9 +32,9 @@ class LoginPage:
 
         wait.until(
             expected_conditions.visibility_of(
-                self.driver.find_element(By.XPATH, self.alertBox_Xpath)
+                self.driver.find_element(*self.ALERT_BOX)
             ))
-        print("\n" + self.driver.find_element(By.XPATH, self.alertBox_Xpath).text)
+        #print("\n" + (*self.ALERT_BOX).text)
 
 
 
