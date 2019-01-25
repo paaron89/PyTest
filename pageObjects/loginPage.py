@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 
-class HomePage:
+class LoginPage:
 
     def __init__(self, driver):
         self.driver = driver
@@ -10,15 +10,15 @@ class HomePage:
         self.passwordBox_ID = 'passwd'
         self.loginButton_ID = 'SubmitLogin'
 
-    def login(self,username,password):
-        usernameBox = self.driver.find_element(By.ID,self.usernameBox_ID)
-        passwordBox = self.driver.find_element(By.ID,self.passwordBox_ID)
-        loginButtonBox = self.driver.find_element(By.ID,self.loginButton_ID)
+    def login(self,username, password):
+        usernameBox = self.driver.find_element(By.ID, self.usernameBox_ID)
+        passwordBox = self.driver.find_element(By.ID, self.passwordBox_ID)
+        loginButtonBox = self.driver.find_element(By.ID, self.loginButton_ID)
 
         usernameBox.clear()
-        usernameBox.sendkeys(username)
+        usernameBox.send_keys(username)
 
         passwordBox.clear()
-        passwordBox.sendkeys(password)
+        passwordBox.send_keys(password)
 
         loginButtonBox.click()
