@@ -1,7 +1,6 @@
 import unittest
 
-from selenium import webdriver
-
+from driverProvider import DriverProvider
 from pageObjects.loginPage import LoginPage
 
 
@@ -9,7 +8,7 @@ class BaseTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.driver = webdriver.Chrome(executable_path='/home/aron/Automation/drivers/chromedriver')
+        cls.driver = DriverProvider.driver
 
     def test_login(self):
         driver = self.driver
