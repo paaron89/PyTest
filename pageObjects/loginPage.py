@@ -13,12 +13,11 @@ class LoginPage:
     def __init__(self, driver):
         self.driver = driver
 
-        self.alertBox_Xpath = '//*[@id="center_column"]/div[1]'
-
     def login(self, username, password):
-        usernameBox = self.driver.find_element(*self.USERNAME_BOX)
-        passwordBox = self.driver.find_element(*self.PASSWORD_BOX)
-        loginButtonBox = self.driver.find_element(*self.LOGIN_BUTTON)
+        driver = self.driver
+        usernameBox = driver.find_element(*self.USERNAME_BOX)
+        passwordBox = driver.find_element(*self.PASSWORD_BOX)
+        loginButtonBox = driver.find_element(*self.LOGIN_BUTTON)
 
         usernameBox.clear()
         usernameBox.send_keys(username)
@@ -26,8 +25,6 @@ class LoginPage:
         passwordBox.send_keys(password)
         loginButtonBox.click()
 
-        LoginPage.wait.wait_until_visible(self.driver.find_element(*self.ALERT_BOX))
-
-
+        LoginPage.wait.wait_until_visible(driver.find_element(*self.ALERT_BOX))
 
         # print("\n" + (*self.ALERT_BOX).text)
