@@ -1,4 +1,6 @@
+from assertpy import assert_that
 from selenium.webdriver.common.by import By
+
 from utils.waits import Waits
 
 
@@ -27,4 +29,4 @@ class LoginPage:
 
         LoginPage.wait.wait_until_visible(driver.find_element(*self.ALERT_BOX))
 
-        # print("\n" + (*self.ALERT_BOX).text)
+        assert_that(driver.find_element(*self.ALERT_BOX).text, 'Hibaüzenet').contains('email')
