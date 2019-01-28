@@ -11,19 +11,11 @@ class BaseTest(unittest.TestCase):
     def setUpClass(cls):
         cls.driver = webdriver.Chrome(executable_path='/home/aron/Automation/drivers/chromedriver')
 
-    def test_get_driver(self):
-
+    def test_login(self):
         driver = self.driver
         driver.get('http://automationpractice.com/index.php?controller=authentication&back=my-account')
         login = LoginPage(driver)
         login.login('username', 'password123')
-
-
-
-
-
-
-
 
     @classmethod
     def tearDownClass(cls):
