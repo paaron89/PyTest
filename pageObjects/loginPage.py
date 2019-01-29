@@ -1,16 +1,13 @@
 from assertpy import assert_that
 from selenium.webdriver.common.by import By
 
-from utils.waits import Waits
-
 
 class LoginPage:
     USERNAME_BOX = (By.ID, 'email')
     PASSWORD_BOX = (By.ID, 'passwd')
     LOGIN_BUTTON = (By.ID, 'SubmitLogin')
     ALERT_BOX = (By.XPATH, '//*[@id="center_column"]/div[1]')
-
-    wait = Waits()
+    ALERT_BOX_XPATH = '//*[@id="center_column"]/div[1]'
 
     def __init__(self, driver):
         self.driver = driver
@@ -26,7 +23,5 @@ class LoginPage:
         passwordBox.clear()
         passwordBox.send_keys(password)
         loginButtonBox.click()
-
-        LoginPage.wait.wait_until_visible(driver.find_element(*self.ALERT_BOX))
 
         assert_that(driver.find_element(*self.ALERT_BOX).text, 'Hibaüzenet').contains('email')
