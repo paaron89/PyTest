@@ -7,17 +7,18 @@ import driverProvider
 class Waits(driverProvider.DriverProvider):
     wait = WebDriverWait(driverProvider.DriverProvider.driver, 5)
 
-    def wait_until_visible(self, webelement):
+    @staticmethod
+    def wait_until_visible(webelement):
         Waits.wait.until(
             expected_conditions.visibility_of(webelement)
         )
-
-    def wait_until_invisible(self, webelement):
+    @staticmethod
+    def wait_until_invisible(webelement):
         Waits.wait.until(
             expected_conditions.invisibility_of_element(webelement)
         )
-
-    def wai_until_clickable(self, webelement):
+    @staticmethod
+    def wai_until_clickable(webelement):
         Waits.wait.until(
             expected_conditions.element_to_be_clickable(webelement)
         )
