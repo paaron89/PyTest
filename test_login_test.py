@@ -6,7 +6,7 @@ from utils.waits import Waits
 from assertpy import assert_that
 
 
-class BaseTest(unittest.TestCase):
+class LoginTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
