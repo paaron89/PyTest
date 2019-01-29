@@ -1,4 +1,3 @@
-from assertpy import assert_that
 from selenium.webdriver.common.by import By
 
 
@@ -23,5 +22,3 @@ class LoginPage:
         passwordBox.clear()
         passwordBox.send_keys(password)
         loginButtonBox.click()
-
-        assert_that(driver.find_element(*self.ALERT_BOX).text, 'Hibaüzenet').contains('email')
