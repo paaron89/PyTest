@@ -14,11 +14,14 @@ class BaseTest(unittest.TestCase):
 
     def test_login(self):
         driver = self.driver
+
+        loginpage = LoginPage(driver)
+
         driver.get('http://automationpractice.com/index.php?controller=authentication&back=my-account')
-        login = LoginPage(driver)
-        login.login('username', 'password123')
-        Waits.wait_until_visible(driver.find_element_by_xpath(LoginPage.ALERT_BOX_XPATH))
-        assert_that(driver.find_element_by_xpath(LoginPage.ALERT_BOX_XPATH).text, 'Alert message').contains('email')
+        loginpage.login('username', 'password123')
+
+        Waits.wait_until_visible(loginpage.get_alert_box())
+        assert_that(loginpage.get_alert_box().text, 'Error message check').contains('email')
 
     @classmethod
     def tearDownClass(cls):

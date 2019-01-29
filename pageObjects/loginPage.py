@@ -11,6 +11,11 @@ class LoginPage:
     def __init__(self, driver):
         self.driver = driver
 
+    def get_alert_box(self):
+        driver = self.driver
+        alertBox = driver.find_element(*self.ALERT_BOX)
+        return alertBox
+
     def login(self, username, password):
         driver = self.driver
         usernameBox = driver.find_element(*self.USERNAME_BOX)
