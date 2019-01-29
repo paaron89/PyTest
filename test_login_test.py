@@ -1,9 +1,10 @@
 import unittest
 
+from assertpy import assert_that
+
 from driverProvider import DriverProvider
 from pageObjects.loginPage import LoginPage
 from utils.waits import Waits
-from assertpy import assert_that
 
 
 class LoginTest(unittest.TestCase):
