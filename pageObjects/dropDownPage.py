@@ -2,11 +2,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 
 
-class DropDownpage:
+class DropDownPage:
     DROP_MENU = (By.ID, 'dropdown')
-    DROP_FIRST = (By.XPATH, '//*[@id="dropdown"]/option[1]')
-    DROP_SECOND = (By.XPATH, '//*[@id="dropdown"]/option[2]')
-    DROP_THIRD = (By.XPATH, '//*[@id="dropdown"]/option[3]')
+    DROP_FIRST_XPATH = '//*[@id="dropdown"]/option[1]'
+    DROP_SECOND_XPATH = '//*[@id="dropdown"]/option[2]'
+    DROP_THIRD_XPATH = '//*[@id="dropdown"]/option[3]'
 
     def __init__(self, driver):
         self.driver = driver
@@ -16,3 +16,9 @@ class DropDownpage:
         dropmenu = driver.find_element(*self.DROP_MENU)
         drop = Select(dropmenu)
         drop.select_by_index(index)
+
+    def get_drop_item_by_xpath(self, item):
+        driver = self.driver
+        dropmenu_item = driver.find_element_by_xpath(item)
+        #print(dropmenu_item.text)
+        return dropmenu_item
