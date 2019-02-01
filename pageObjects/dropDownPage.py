@@ -20,5 +20,10 @@ class DropDownPage:
     def get_drop_item_by_xpath(self, item):
         driver = self.driver
         dropmenu_item = driver.find_element_by_xpath(item)
-        #print(dropmenu_item.text)
         return dropmenu_item
+
+    def get_drop_menu_size(self):
+        driver = self.driver
+        dropmenu = driver.find_element(*self.DROP_MENU)
+        drop = Select(dropmenu)
+        return len(drop.options)
