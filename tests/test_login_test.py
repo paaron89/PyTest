@@ -22,6 +22,7 @@ class LoginTest(unittest.TestCase):
         loginpage.login('username', 'password123')
 
         Waits.wait_until_visible(loginpage.get_alert_box())
+        driver.get_screenshot_as_file('/home/aron/PycharmProjects/sel/screenshots/' + 'date_and_time'+'_screenshot.png')
         assert_that(loginpage.get_alert_box().text, 'Error message check').contains('email')
 
     @classmethod
